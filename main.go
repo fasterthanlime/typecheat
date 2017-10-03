@@ -64,7 +64,7 @@ func main() {
 		}
 
 		progressed := false
-		for j := len(indices) - 1; j > 0; j-- {
+		for j := len(indices) - 1; j >= 0; j-- {
 			if indices[j]+1 < len(spec.letters[j]) {
 				indices[j]++
 				for k := j + 1; k < len(indices); k++ {
