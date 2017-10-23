@@ -6,10 +6,11 @@ Dictionary sourced from <https://github.com/dwyl/english-words>
 
 ### Usage
 
-Modify the `spec` variable at the start of the main function, then run:
+Build a binary and then provide it with the groups of letters as arguments:
 
 ```bash
-go run main.go
+go build
+./typecheat rsalp eihon wxast tyrdi pioe v gnyde
 ```
 
 It should print all the combinations that are words.
