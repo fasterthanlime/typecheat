@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"log"
 	"os"
 	"time"
@@ -15,15 +16,18 @@ type Spec struct {
 
 func main() {
 	spec := Spec{
-		letters: []Letter{
-			[]string{"r", "s", "a", "l", "p"},
-			[]string{"e", "i", "h", "o", "n"},
-			[]string{"w", "x", "a", "s", "t"},
-			[]string{"t", "y", "r", "d", "i"},
-			[]string{"p", "i", "o", "e"},
-			[]string{"v"},
-			[]string{"g", "n", "y", "d", "e"},
-		},
+		letters: []Letter{},
+	}
+	if len(os.Args[1:]) < 1 {
+		fmt.Fprintf(os.Stderr, "Place letter groups as subsequent arguments, like this:\n\t%s rsalp eihon wxast tyrdi pioe v gnyde\n", os.Args[0])
+		os.Exit(1)
+	}
+	for _, letter := range os.Args[1:] {
+		l := []string{}
+		for _, char := range letter {
+			l = append(l, string(char))
+		}
+		spec.letters = append(spec.letters, l)
 	}
 
 	t1 := time.Now()
